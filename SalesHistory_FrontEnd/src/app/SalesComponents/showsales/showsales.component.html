@@ -1,0 +1,51 @@
+<div class="table table-bordered p-3" style="background-color:aliceblue;">
+    <h3 align="center" class="mt-1 mb-3"><b>Sales Table</b></h3>
+    <div align="center" class="d-block">
+        <div class="d-inline-block my-2 px-4">
+            <select class="form-select" name="searchbox" id="searchbox" [(ngModel)]="searchbox">
+                <option value="all">All</option>
+                <option value="byQuarter">Search by Quarter</option>
+                <option value="byDate">Search by Date</option>
+            </select>
+        </div>
+        <div class="d-inline-block my-2 px-4">
+            <input type="text" placeholder="Enter Input" class="form-control" name="searchParam" id="searchParam" [(ngModel)]="searchParam">
+        </div>
+        <div class="d-inline-block my-2 px-4">
+            <button class="btn" style="background-color: lightskyblue;" (click)="search()">Search</button>
+        </div>
+    </div>
+    <div class="d-flex justify-content-center">
+        <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+            {{errMsg}}
+        </div>
+    </div>
+    <table align="center" border="2px">
+        <tr>
+            <th>Customer Id</th>
+            <th>Product Id</th>
+            <th>Time</th>
+            <th>Channel Id</th>
+            <th>Promo Id</th>
+            <th>Quantity Sold</th>
+            <th>Amount Sold</th>
+        </tr>
+        <tr *ngFor="let s of getCurrentPage()">
+            <th>{{s.custId}}</th>
+            <td>{{s.prodId}}</td>
+            <td>{{s.timeId}}</td>
+            <td>{{s.channelId}}</td>
+            <td>{{s.promoId}}</td>
+            <td>{{s.quantitySold}}</td>
+            <td>{{s.amountSold}}</td>
+        </tr>
+
+    </table>
+    <!-- Pagination -->
+    <div class="text-center mt-3"  border=2px;>
+        <button class="btn m-2" style="background-color: lightskyblue ;" [disabled]="currentPage === 1" (click)="goToPage(1)">First</button>
+        <button class="btn btn-primary m-2" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)"><< </button>
+        <button class="btn btn-primary m-2 " [disabled]="currentPage === getTotalPages()" (click)="goToPage(currentPage + 1)"> >> </button>
+        <button class="btn btn-primary m-2" style="background-color: lightskyblue ;"[disabled]="currentPage === getTotalPages()"(click)="goToPage(getTotalPages())">Last</button>
+      </div>
+</div>

@@ -1,0 +1,31 @@
+<div class="table table-bordered p-4" style="background-color:aliceblue;">
+    <p class="h4 mb-3" align="center"><b>Channel With Aggregate Sales</b></p>
+    <div align="center" class="d-block p-4">
+        <div class="d-inline-block px-3">
+            <select class="form-select" name="searchQuery" id="searchQuery" [(ngModel)]="searchQuery">
+                <option value="1">Wholesale</option>
+                <option value="2">Retail</option>
+                <option value="3">E Commerce</option>
+                <option value="4">Marketplace</option>
+            </select>
+        </div>
+        <div class="d-inline-block px-3">
+            <button class="btn" style="background-color: lightskyblue;" (click)="search()">Search</button>
+        </div>
+    </div>
+    <table align="center" border="2px">
+        <tr>
+            <th>Channel Name</th>
+            <th>Aggregate Sales</th>
+        </tr>
+        <tr>
+            <td>{{channelName}}</td>
+            <td>{{aggr}}</td>
+        </tr>
+    </table>
+    <div class="d-flex justify-content-center">
+        <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+            {{errMsg}}
+        </div>
+    </div>
+</div>

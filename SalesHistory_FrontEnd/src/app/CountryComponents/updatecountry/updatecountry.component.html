@@ -1,0 +1,89 @@
+<div>
+  <h3 style="text-align: center;"><b>Update Country</b></h3>
+  <div class="d-flex justify-content-center">
+    <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+      {{errMsg}}
+    </div>
+  </div>
+  <form #updatecont="ngForm" class="my-md-3">
+    <div align="center">
+      <table border="2px" style="background-color:aliceblue;  padding-right: 30px;">
+        <tr>
+          <!-- <td><label for="id" style="margin: 20px;"><b>Country Id* : </b></label></td>
+          <td id="inppad"><input type="number" id="id" placeholder="Enter countryId" class="form-control"
+              name="countryId" [(ngModel)]="countries.countryId" disabled  #countryId="ngModel" required maxlength="6" [pattern]="IDRegex"
+              [ngClass]="{error:countryId.errors && countryId.touched}">
+            <div *ngIf="countryId.errors && countryId.touched">
+              <small class="text-danger" *ngIf="countryId.errors['required']">Country Id is required</small>
+            </div> -->
+
+
+        </tr>
+        <tr>
+          <td><label for="cname" style="margin: 20px;"><b>Country Name :</b></label></td>
+          <td id="inppad"><input type="text" id="cname" placeholder="Enter Country" class="form-control"
+              name="countryName" [(ngModel)]="countries.countryName"></td>
+
+          <td><label for="iso" style="margin: 20px;"><b>ISO code</b></label></td>
+          <td id="inppad"><input type="text" id="iso" placeholder="Enter ISOcode" class="form-control"
+              name="countryIsoCode" [(ngModel)]="countries.countryIsoCode"></td>
+
+        </tr>
+        <tr>
+          <td><label for="region" style="margin: 20px;"><b>Region :</b></label></td>
+          <td id="inppad"><input type="text" id="region" placeholder="Enter region name" class="form-control"
+              name="countryRegion" [(ngModel)]="countries.countryRegion"></td>
+
+          <td><label for="region_id" style="margin: 20px;"><b>Region ID* :</b></label></td>
+          <td id="inppad"><input type="number" id="region_id" placeholder="Enter regionId" class="form-control"
+              name="countryRegionId" [(ngModel)]="countries.countryRegionId" #countryRegionId="ngModel" required
+              [ngClass]="{error:countryRegionId.errors && countryRegionId.touched}">
+            <div *ngIf="countryRegionId.errors && countryRegionId.touched">
+              <small class="text-danger" *ngIf="countryRegionId.errors['required']"> Region ID is required</small>
+              <small class="text-danger" *ngIf="countryRegionId.errors['pattern']">Please Enter valid Region ID</small>
+            </div>
+        </tr>
+        <tr>
+          <td><label for="subregion" style="margin: 20px;"><b>Sub-region :</b></label></td>
+          <td id="inppad"><input type="text" id="subregion" class="form-control" name="countrySubregion"
+              [(ngModel)]="countries.countrySubregion"></td>
+
+          <td><label for="subregion-id" style="margin: 20px;"><b>Sub-region ID* :</b></label></td>
+          <td id="inppad"><input type="number" id="subregion-id" placeholder="Enter subregion_ID" class="form-control"
+              name="countrySubregionId" [(ngModel)]="countries.countrySubregionId" #countrySubregionId="ngModel"
+              required maxlength="10" [pattern]="IDRegex"
+              [ngClass]="{error:countrySubregionId.errors && countrySubregionId.touched}">
+            <div *ngIf="countrySubregionId.errors && countrySubregionId.touched">
+              <small class="text-danger" *ngIf="countrySubregionId.errors['required']">Sub-Region ID is required</small>
+            </div>
+        </tr>
+
+        <tr>
+          <td><label for="countrytotal" style="margin: 20px;"><b>Country Total :</b></label></td>
+          <td id="inppad"><input type="text" id="countrytotal" placeholder="Enter countrytotal" class="form-control"
+              name="countryTotal" [(ngModel)]="countries.countryTotal"></td>
+
+          <td><label for="countrytotalId" style="margin: 20px;"><b>country Total Id* :</b></label></td>
+          <td id="inppad"><input type="number" id="countrytotalId" placeholder="Enter countrytotalId"
+              class="form-control" name="countryTotalId" [(ngModel)]="countries.countryTotalId"
+              #countryTotalId="ngModel" required maxlength="20" [pattern]="IDRegex"
+              [ngClass]="{error:countryTotalId.errors && countryTotalId.touched}">
+            <div *ngIf="countryTotalId.errors && countryTotalId.touched">
+              <small class="text-danger" *ngIf="countryTotalId.errors['required']">Country Total ID is required</small>
+              <small class="text-danger" *ngIf="countryTotalId.errors['pattern']">Please Enter Valid Country Total
+                ID</small>
+            </div>
+        </tr><br>
+      </table>
+      <div style="color: brown;">
+        <button class="btn my-3" style="background-color:lightskyblue;" (click)="edit()"
+          [disabled]="updatecont.invalid"><b>Update Country</b></button>
+        <div *ngIf="updatecont.invalid">
+          <small class="text-danger">Please Fill Required Filed</small>
+        </div>
+      </div>
+
+
+    </div>
+  </form>
+</div>

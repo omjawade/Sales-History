@@ -1,0 +1,26 @@
+export interface Customer{
+    custId:number
+    custFirstName:string
+    custLastName:string
+    custGender:string
+    custYearOfBirth:number
+    custMaritalStatus:string
+    custStreetAddress:string
+    custPostalCode:string
+    custCity:string
+    custCityId:number
+    custStateProvince:string
+    custStateProvinceId:number
+    countryId:number
+    custMainPhoneINT:string
+    custIncomeLevel:string
+    custCreditLimit:number
+    custEmail:string
+    custTotal:string
+    custTotalId:number
+    custSrcId:number
+    custEffFrom:Date
+    custEffTo:Date
+    custValid:string
+    custMainPhoneNumber:string
+}

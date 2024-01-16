@@ -1,0 +1,61 @@
+<div style="background-color: aliceblue;">
+  <h3 style="text-align: center;" class="border-2"><b>Country Table</b></h3>
+  <div align="center" class="d-block">
+    <span class="d-inline-block px-3 py-2">Search by Id:</span>
+    <span class="d-inline-block px-3 py-2">
+      <input type="number" class="form-control" name="byId" [(ngModel)]="byId">
+    </span>
+    <span class="d-inline-block px-3 py-2"><button class="btn btn-info" (click)="search()">Search</button></span>
+  </div>
+  <div class="d-flex justify-content-center">
+    <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+        {{errMsg}}
+    </div>
+</div>
+  <div class="table table-striped table-bordered px-4">
+    <table align="center" border="2px">
+      <tr>
+        <th>ID</th>
+        <th>ISO Code</th>
+        <th>Country Name</th>
+        <th>Sub Region</th>
+        <th>Sub Region ID</th>
+        <th>Region</th>
+        <th>Region ID</th>
+        <th>Country Total </th>
+        <th>Country Total ID</th>
+        <th>Action</th>
+      </tr>
+      <!-- looping the data  -->
+      <tr *ngFor="let c of getCurrentPageCountries()">
+        <td>{{c.countryId}}</td>
+        <td>{{c.countryIsoCode}}</td>
+        <td>{{c.countryName}}</td>
+        <td>{{c.countrySubregion}}</td>
+        <td>{{c.countrySubregionId}}</td>
+        <td>{{c.countryRegion}}</td>
+        <td>{{c.countryRegionId}}</td>
+        <td>{{c.countryTotal}}</td>
+        <td>{{c.countryTotalId}}</td>
+        <td><a class="btn" style="background-color: lightskyblue ;"
+            [routerLink]="['/updatecountry',c.countryId]">Update</a></td>
+      </tr>
+    </table>
+
+    <!-- Pagination -->
+    <div class="text-center mt-3" border=2px;>
+      <button class="btn m-2" style="background-color: lightskyblue ;" [disabled]="currentPage === 1"
+        (click)="goToPage(1)">First</button>
+      <button class="btn btn-primary m-2" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+        << </button>
+          <button class="btn btn-primary m-2 " [disabled]="currentPage === getTotalPages()"
+            (click)="goToPage(currentPage + 1)"> >> </button>
+          <button class="btn btn-primary m-2" style="background-color: lightskyblue ;"
+            [disabled]="currentPage === getTotalPages()" (click)="goToPage(getTotalPages())">Last</button>
+    </div>
+
+    <button class=" btn my-3" style="background-color:lightskyblue ;" [routerLink]="['/addcountry']" align="center">Add
+      Country
+    </button>
+  </div>
+</div>

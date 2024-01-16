@@ -1,0 +1,105 @@
+<div class="d-block" align="center" style="background-color: aliceblue;">
+  <h3 style="text-align: center;"><b>Customers Table</b></h3>
+  <span class="d-inline-block my-3">
+    <select class="form-select" [(ngModel)]="searchParam" name="searchParam" id="searchParam" (change)="changeHidden()">
+      <option value="all">All</option>
+      <option value="firstname">First Name</option>
+      <option value="city">City</option>
+      <option value="income">Income</option>
+      <option value="searchBetweenCreditLimit" >Search Between Credit Limit</option>
+    </select>
+  </span>
+  <span class="d-inline-block mx-3">
+    <input class="form-control" type="text" name="searchQuery" [(ngModel)]="searchQuery">
+  </span>
+  <span class="d-inline-block mx-3">
+    <button class="btn btn-primary" (click)="search()">Search</button>
+  </span>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+      {{errMsg}}
+  </div>
+</div>
+<div align="center" [hidden]="ishidden" class="text-danger">
+  For searching between credit limit separate values by '-'
+</div>
+<div class="table table-responsive table-striped table-bordered p-4" style="background-color: aliceblue;">
+  <table align="center" border="2px">
+    <tr>
+      <th class="align-top">Customer Id</th>
+      <th class="align-top">First Name</th>
+      <th class="align-top">Last Name</th>
+      <th class="align-top">Gender</th>
+      <th class="align-top">Year Of Birth</th>
+      <th class="align-top">Marital Status</th>
+      <th class="align-top">Street Address</th>
+      <th class="align-top">Postal Code</th>
+      <th class="align-top">City</th>
+      <th class="align-top">City Id</th>
+      <th class="align-top">State Province</th>
+      <th class="align-top">State ProviceId</th>
+      <th class="align-top">Country</th>
+      <th class="align-top">Main Phone</th>
+      <th class="align-top">Income Level</th>
+      <th class="align-top">Credit Limit</th>
+      <th class="align-top">Email</th>
+      <th class="align-top">Customer Total</th>
+      <th class="align-top">Cust Total Id</th>
+      <!-- <th class="align-top">Cust src Id</th>
+      <th class="align-top">From</th>
+      <th class="align-top">To</th> -->
+      <th class="align-top">Customer Valid</th>
+      <!-- <th class="align-top">Customer main Phone Number</th> -->
+      <th class="align-top">Action</th>
+    </tr>
+    <tr *ngFor="let c of getCurrentPageCustomer();">
+      <th>{{c.custId}}</th>
+      <td>{{c.custFirstName}}</td>
+      <td>{{c.custLastName}}</td>
+      <td>{{c.custGender}}</td>
+      <td>{{c.custYearOfBirth}}</td>
+      <td>{{c.custMaritalStatus}}</td>
+      <td>{{c.custStreetAddress}}</td>
+      <td>{{c.custPostalCode}}</td>
+      <td>{{c.custCity}}</td>
+      <td>{{c.custCityId}}</td>
+      <td>{{c.custStateProvince}}</td>
+      <td>{{c.custStateProvinceId}}</td>
+      <td>{{c.countryId}}</td>
+      <td>{{c.custMainPhoneINT}}</td>
+      <td>{{c.custIncomeLevel}}</td>
+      <td [routerLink]="['/updatecreditlimit',c.custId]"><a class="link">{{c.custCreditLimit}}</a></td>
+      <td>{{c.custEmail}}</td>
+      <td>{{c.custTotal}}</td>
+      <td>{{c.custTotalId}}</td>
+      <!-- <td>{{c.custSrcId}}</td>
+      <td>{{c.custEffFrom}}</td>
+      <td>{{c.custEffTo}}</td> -->
+      <td>{{c.custValid}}</td>
+      <!-- <td>{{c.custMainPhoneNumber}}</td> -->
+      <td><a class="btn" style="background-color: lightskyblue;" [routerLink]="['/updatecustomer',c.custId]">Update</a></td>
+    </tr>
+  </table>
+
+
+  <!-- paginatios  -->
+
+  <div class="text-center my-3">
+    <td><button class="btn btn-primary" [disabled]="currentPage === 1" 
+        (click)="goToPage(1)">First</button>
+    <td><button class="btn btn-primary" [disabled]="currentPage === 1"
+        (click)="goToPage(currentPage - 1)"> << </button>
+    <td><button class="btn btn-primary" [disabled]="currentPage === getTotalPages()"
+        (click)="goToPage(currentPage + 1)"> >> </button>
+    <td><button class="btn btn-primary" [disabled]="currentPage === getTotalPages()"
+        (click)="goToPage(getTotalPages())">Last</button>
+  </div>
+
+  <button class=" btn my-3" style="background-color:lightskyblue ;" [routerLink]="['/addcustomer']" align="center">Add
+    Customer
+  </button>
+</div>
+
+
+ 

@@ -1,0 +1,19 @@
+.container-fluid {
+     background-image: url(/assets/homepage.png);
+     background-size: cover;
+     background-repeat: no-repeat;
+     height: 90vh;
+     background-attachment: fixed;
+     position: relative;
+}
+.justify-content-start{
+     padding-top: 50px;
+}
+
+
+   
+   
+   
+   
+   
+

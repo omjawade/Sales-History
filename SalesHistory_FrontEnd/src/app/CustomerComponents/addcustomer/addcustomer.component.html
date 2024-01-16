@@ -1,0 +1,177 @@
+<h3 style="text-align: center;"><b>Add Customer</b></h3>
+<div class="d-flex justify-content-center">
+    <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+        {{errMsg}}
+    </div>
+</div>
+<form class="mt-3" #addCust="ngForm" (ngSubmit)="addCustomer()"> 
+    <div align="center">
+        <table border="2px" style="background-color:aliceblue;  padding-right: 30px;">
+            <!-- <tr>
+                <td><label for="id" style="margin: 20px;"><b>Customers ID* :</b></label></td>
+                <td style="padding-right: 30px;"><input type="number"  class="form-control" name="custId" [(ngModel)]="cust.custId" #custId="ngModel" required maxlength="10" [ngClass]="{error:custId.errors && custId.touched}" placeholder="Enter Customer Id">
+                    <div *ngIf="custId.errors && custId.touched"  >
+                        <small class="text-danger" *ngIf="custId.errors['required']"> Customer ID  is required</small>
+                        <small class="text-danger" *ngIf="custId.errors"></small>
+                    </div>
+                </td>
+            </tr> -->
+            <tr>
+                <td><label for="fname" style="margin: 20px;"><b>First Name :</b></label></td>
+                <td style="padding-right: 30px;"><input type="text"  class="form-control"  name="custFirstName" [(ngModel)]="cust.custFirstName"  #custFirstName="ngModel"  maxlength="10" [pattern]="nameRegex" [ngClass]="{error:custFirstName.errors && custFirstName.touched}">
+                    <div *ngIf="custFirstName.errors">
+                        <small class="text-danger" *ngIf="custFirstName.errors['pattern']">please Enter the valid Name</small>
+                    </div>
+                </td>
+
+                <td><label for="lname" style="margin: 20px;"><b>Last Name :</b></label></td>
+                <td style="padding-right: 30px;"><input type="text"  class="form-control"  name="custLastName" [(ngModel)]="cust.custLastName"  #custLastName="ngModel"  maxlength="10" [pattern]="nameRegex" [ngClass]="{error:custLastName.errors && custLastName.touched}">
+                    <div *ngIf="custLastName.errors && custLastName.touched"  >
+                        <small class="text-danger" *ngIf="custLastName.errors['pattern']">please Enter the valid name</small>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="email" style="margin: 20px;"><b>Email :</b></label></td>
+                <td style="padding-right: 30px;"><input type="email" id="email" class="form-control" placeholder="Enter Email" name="custEmail" [(ngModel)]="cust.custEmail"  #custEmail="ngModel" [pattern]="emailRegex">
+                    <div *ngIf="custEmail.errors">
+                        <small class="text-danger" *ngIf="custEmail.errors['pattern']">Please Enter Valid Email Id</small>
+                    </div>
+                </td>
+                <td><label for="gender" style="margin: 20px;"><b>Gender :</b></label></td>
+                <td>
+                    <input type="radio" name="gender" value="M"  name="custGender" [(ngModel)]="cust.custGender">Male &nbsp;&nbsp;
+                    <input type="radio" name="gender" value="F" name="custGender" [(ngModel)]="cust.custGender">Female
+                </td>
+                <!-- <td><input type="submit" value="Submit"></td> -->
+            </tr>
+            <tr>
+                <td><label for="date" style="margin: 20px;"><b>Year Of Birth* :</b></label></td>
+                <td style="padding-right: 30px;"><input type="number"  class="form-control"  name="custYearOfBirth" required [(ngModel)]="cust.custYearOfBirth"  #custYearOfBirth="ngModel"  [ngClass]="{error:custYearOfBirth.errors && custYearOfBirth.touched}" placeholder="Enter year of Birth">
+                    <div *ngIf="custYearOfBirth.errors && custYearOfBirth.touched"  >
+                        <small class="text-danger" *ngIf="custYearOfBirth.errors['required']">Birth date is required</small>
+                    </div>
+                </td>
+
+                <td><label for="marital" style="margin: 20px;"><b>Marital Status :</b></label></td>
+                <td>
+                    <input type="radio"  value="married" name="custMaritalStatus" [(ngModel)]="cust.custMaritalStatus" >Married &nbsp;&nbsp;
+                    <input  type="radio"  value="single" name="custMaritalStatus" [(ngModel)]="cust.custMaritalStatus">Unmarried
+                </td>
+                <!-- <td><input type="submit" value="Submite"></td> -->
+            </tr>
+            <tr>
+                <td><label for="Address" style="margin: 20px;"><b>Street Address :</b></label></td>
+                <td style="padding-right: 30px;"><input type="text"  class="form-control"  name="custStreetAddress" [(ngModel)]="cust.custStreetAddress" maxlength="40">
+        
+                </td>
+
+                <td><label for="postcode" style="margin: 20px;"><b>Postal Code :</b></label></td>
+                <td style="padding-right: 30px;"><input type="text"  class="form-control"  name="custPostalCode" [(ngModel)]="cust.custPostalCode" maxlength="6">
+               </td>
+            </tr>
+            <tr>
+                <td><label for="city" style="margin: 20px;"><b>City :</b></label></td>
+                <td style="padding-right: 30px;"><input type="text"  class="form-control"  name="custCity" [(ngModel)]="cust.custCity"  #custCity="ngModel"  maxlength="10" [pattern]="nameRegex" [ngClass]="{error:custCity.errors && custCity.touched}">
+                    <div *ngIf="custCity.errors && custCity.touched">
+                        <small class="text-danger" *ngIf="custCity.errors['pattern']">Please Enter Valid City Name</small>
+                    </div>
+                </td>
+
+
+                <td><label for="cityid" style="margin: 20px;"><b>City ID* :</b></label></td>
+                <td style="padding-right: 30px;"><input type="number"  class="form-control"  name="custCityId" [(ngModel)]="cust.custCityId"  #custCityId="ngModel" required maxlength="10" [ngClass]="{error:custCityId.errors && custCityId.touched}" placeholder="Enter City Id">
+                    <div *ngIf="custCityId.errors && custCityId.touched"  >
+                        <small class="text-danger" *ngIf="custCityId.errors['required']"> City ID is required</small>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="statep" style="margin: 20px;"><b>State Province :</b></label></td>
+                <td style="padding: right 30px;"><input type="text"  class="form-control"  name="custStateProvince" [(ngModel)]="cust.custStateProvince"  #custStateProvince="ngModel"  maxlength="10" [pattern]="nameRegex" [ngClass]="{error:custStateProvince.errors}">
+                    <div *ngIf="custStateProvince.errors">
+                        <small class="text-danger" *ngIf="custStateProvince.errors['pattern']">Please Enter the valide name</small>
+                    </div>
+                </td>
+
+                <td><label for="stateP_Id" style="margin: 20px;"><b>State ProviceId* :</b></label></td>
+                <td style="padding-right: 30px;"><input type="number"  class="form-control"  name="custStateProvinceId" #custStateProvinceId="ngModel" [(ngModel)]="cust.custStateProvinceId"  required maxlength="10" [ngClass]="{error:custStateProvinceId.errors && custStateProvinceId.touched}" >
+                    <div *ngIf="custStateProvinceId.errors && custStateProvinceId.touched"  >
+                        <small class="text-danger" *ngIf="custStateProvinceId.errors['required']">Customer State Provice Id  is required</small>
+                    </div>
+                 
+                </td>
+            </tr>
+            <tr>
+                <td><label for="country" style="margin: 20px;"><b>Country Id*:</b></label></td>
+                <td style="padding-right: 30px;"><input type="text"  class="form-control"  name="countryId" [(ngModel)]="cust.countryId"  #countryId="ngModel" required maxlength="10" [ngClass]="{error:countryId.errors && countryId.touched}" placeholder="Enter Country Id">
+                    <div *ngIf="countryId.errors && countryId.touched"  >
+                        <small class="text-danger" *ngIf="countryId.errors['required']">Country Id  is required</small>
+                    </div>
+                </td>
+
+                <td><label for="main_phone" style="margin: 20px;"><b>Main Phone :</b></label></td>
+                <td><input type="text" id="main_phone" class="form-control"  name="custMainPhoneINT" [(ngModel)]="cust.custMainPhoneINT" #custMainPhoneINT="ngModel"   maxlength="10" >
+                 
+                
+                </td>
+            </tr>
+            <tr>
+                <td><label for="income" style="margin: 20px;"><b>Income Level :</b></label></td>
+                <td style="padding-right: 30px;"><input type="text"  class="form-control"  name="custIncomeLevel" [(ngModel)]="cust.custIncomeLevel"   maxlength="15">
+                </td>
+                <td><label for="creadit_limit" style="margin: 20px;"><b>Credit Limit :</b></label></td>
+                <td style="padding-right: 30px;"><input type="number"  class="form-control"  name="custCreditLimit" [(ngModel)]="cust.custCreditLimit" maxlength="15">
+                </td>
+            </tr>
+            
+            <tr>
+                <td><label for="cust_total" style="margin: 20px; "><b>Customer Total :</b></label></td>
+                <td><input type="text" id="cust_total" class="form-control"  name="custTotal" [(ngModel)]="cust.custTotal"  maxlength="10">
+                   
+                </td>
+
+                <td><label for="cust_totalId" style="margin: 20px;"><b>Customer TotalId* :</b></label></td>
+                <td><input type="number" id="cust_totalId" class="form-control"  name="custTotalId" [(ngModel)]="cust.custTotalId"  #custTotalId="ngModel" required maxlength="10" [ngClass]="{error:custTotalId.errors && custTotalId.touched}" placeholder="Enter Customer Total Id">
+                    <div *ngIf="custTotalId.errors && custTotalId.touched"  >
+                        <small class="text-danger" *ngIf="custTotalId.errors['required']">Customer Total ID  is required</small>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td><label for="cust_srclId" style="margin: 20px;"><b>Customer SrclId :</b></label></td>
+                <td><input type="number"  class="form-control"  name="custSrcId" [(ngModel)]="cust.custSrcId" maxlength="10">
+                   
+                </td>
+
+                <td><label for="cust_effForm" style="margin: 20px;"><b>CustomerEff Form :</b></label></td>
+                <td><input type="date"  class="form-control"  name="custEffFrom" [(ngModel)]="cust.custEffFrom"  maxlength="10">
+                   
+                </td>
+            </tr>
+            <tr>
+                <td><label for="cust_effTo" style="margin: 20px;"><b>CustomerEff To :</b></label></td>
+                <td><input type="date"  class="form-control"  name="custEffTo" [(ngModel)]="cust.custEffTo"  maxlength="10">
+                </td>
+
+                <td><label for="cust_validate" style="margin: 20px;"><b>Customer Validate :</b></label></td>
+                <td><input type="text"  class="form-control" name="custValid" [(ngModel)]="cust.custValid"   maxlength="10">
+                   
+                </td>
+            </tr>
+            <tr>
+                <td><label for="cust_validate" style="margin: 20px;"><b>Customer PhoneNo:</b></label></td>
+                <td><input type="number"  class="form-control" name="custMainPhoneNumber" [(ngModel)]="cust.custMainPhoneNumber"  #custMainPhoneNumber="ngModel"  maxlength="10"  >
+                </td>
+            </tr>
+        </table>
+
+        <div>
+            <button class=" btn my-3" style="background-color:lightskyblue ;" align="center" [disabled]="addCust.invalid"><b>Add Customer</b></button>
+            <div *ngIf="addCust.invalid">
+                <small class="text-danger">Please Fill required fields</small>
+            </div>
+        </div>
+    </div>
+
+</form>

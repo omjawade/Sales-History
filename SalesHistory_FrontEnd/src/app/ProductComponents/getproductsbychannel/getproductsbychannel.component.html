@@ -1,0 +1,58 @@
+<div class="d-block" align="center" style="background-color: aliceblue;">
+  <h3 style="text-align: center;"><b>Get Products By Channel</b></h3>
+  <span class="d-inline-block mx-3">
+    <span class="d-inline-block mt-2 px-2 pb-4">Channel</span>
+    <span class="d-inline-block mt-2 px-2 pb-4">
+      <select name="sortParam" id="channelName" class="form-select" [(ngModel)]="channelName">
+        <option value="Wholesale">Wholesale</option>
+        <option value="Retail">Retail</option>
+        <option value="E Commerce">E Commerce</option>
+        <option value="Marketplace">Marketplace</option>
+      </select>
+    </span>
+  </span>
+  <span class="d-inline-block mt-2 px-2 pb-4">
+    <button class="btn btn-primary" (click)="getByChannel()">Find Products Sold By Channel</button>
+  </span>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+    {{errMsg}}
+  </div>
+</div>
+<div class="table table-responsive table-striped table-bordered pt-4 p-4" style="background-color:aliceblue;">
+  <table align="center" border="2px">
+
+    <tr>
+      <th scope="col" class="align-top">Customer Id</th>
+      <th scope="col" class="align-top">Customer First Name</th>
+      <th scope="col" class="align-top">Customer Last Name</th>
+      <th scope="col" class="align-top">Product Id</th>
+      <th scope="col" class="align-top">Product Name</th>
+      <!-- <th scope="col" class="align-top">Product Desc</th> -->
+      <th scope="col" class="align-top">Category</th>
+      <th scope="col" class="align-top">Product Price</th>
+    </tr>
+    <tr *ngFor="let p of getCurrentPage();">
+      <th scope="row">{{p.custId}}</th>
+      <td>{{p.custFirstName}}</td>
+      <td>{{p.custLastName}}</td>
+      <td>{{p.prodId}}</td>
+      <td>{{p.prodName}}</td>
+      <!-- <td>{{p.prodDesc}}</td> -->
+      <td>{{p.prodCategory}}</td>
+      <td>{{p.prodListPrice}}</td>
+    </tr>
+  </table>
+  <!-- Pagination -->
+  <div class="text-center mt-3" border=2px;>
+    <button class="btn m-2" style="background-color: lightskyblue ;" [disabled]="currentPage === 1"
+      (click)="goToPage(1)">First</button>
+    <button class="btn btn-primary m-2" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+      << </button>
+        <button class="btn btn-primary m-2 " [disabled]="currentPage === getTotalPages()"
+          (click)="goToPage(currentPage + 1)"> >> </button>
+        <button class="btn btn-primary m-2" style="background-color: lightskyblue ;"
+          [disabled]="currentPage === getTotalPages()" (click)="goToPage(getTotalPages())">Last</button>
+  </div>
+</div>

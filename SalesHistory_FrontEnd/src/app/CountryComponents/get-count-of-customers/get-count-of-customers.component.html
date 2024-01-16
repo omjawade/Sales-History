@@ -1,0 +1,59 @@
+<div align="center" class="d-flex justify-content-evenly" style="background-color: aliceblue;">
+    <div class="d-inline-block m-2 float-start" style="border-right: 10px;">
+        <h2 style="text-align: center;">Countrywise Total Customers</h2>
+        <div class="table table-responsive table-striped table-bordered mt-4 m-4 bg">
+            <table align="center" border="2px">
+                <tr>
+                    <th>Country Name</th>
+                    <th>Count Of Customers</th>
+                </tr>
+                <!-- looping the data  -->
+                <tr *ngFor="let c of getCurrentPageCountries()">
+                    <td class="text-left">{{c.countryName}}</td>
+                    <td class="text-center">{{c.customerCount}}</td>
+                </tr>
+            </table>
+
+            <!-- Pagination -->
+            <div class="text-center" style="flex-direction: column; align-self: center;">
+                <td><button class="btn btn-primary" [disabled]="currentPage === 1" (click)="goToPage(1)">First</button>
+                <td><button class="btn btn-primary" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+                        << </button>
+                <td><button class="btn btn-primary" [disabled]="currentPage === getTotalPages()"
+                        (click)="goToPage(currentPage + 1)"> >> </button>
+                <td><button class="btn btn-primary" [disabled]="currentPage === getTotalPages()"
+                        (click)="goToPage(getTotalPages())">Last</button>
+            </div>
+        </div>
+    </div>
+    <div class="d-inline-block align-top m-2 ">
+        <h2 style="text-align: center;">Region-wise Total Customers</h2>
+        <div class="d-block">
+            <div class="d-inline-block mx-2">
+                <input type="text" class="form-control" placeholder="Region name" name="searchQuery"
+                    [(ngModel)]="searchQuery">
+            </div>
+            <div class="d-inline-block mx-2">
+                <button class="btn btn-primary" (click)="search()">Search</button>
+            </div>
+        </div>
+        <div class="table table-responsive table-striped table-bordered mt-4 m-4 bg">
+            <table align="center" border="2px">
+                <tr>
+                    <th>Region Name</th>
+                    <th>Count Of Customers</th>
+                </tr>
+                <!-- looping the data  -->
+                <tr *ngFor="let r of regions">
+                    <td class="text-left">{{r.region}}</td>
+                    <td class="text-center">{{r.customerCount}}</td>
+                </tr>
+            </table>
+        </div>
+        <div class="d-flex justify-content-center">
+            <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+                {{errMsg}}
+            </div>
+        </div>
+    </div>
+</div>

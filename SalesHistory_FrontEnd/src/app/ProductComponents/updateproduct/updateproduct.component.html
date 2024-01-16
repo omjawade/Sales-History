@@ -1,0 +1,125 @@
+<h2 style="text-align: center;">Update Product</h2>
+<div class="d-flex justify-content-center">
+    <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+        {{errMsg}}
+    </div>
+</div>
+<form #Prod="ngForm" (ngSubmit)="edit()" border="2px" class="my-3">
+    <div class="form-group" align="center">
+        <table border="2px" style="background-color:aliceblue;  padding-right: 30px;">
+            <tr>
+                <td><label style="margin: 20px;">Product Id:</label></td>
+                <td style="padding-right: 30px;"><input type="number" class="form-control" name="prod_id"
+                        [(ngModel)]="prodForm.prodId" disabled></td>
+
+                <td><label style="margin: 20px;">Product Name:</label></td>
+                <td style="padding-right: 30px;"><input type="text" class="form-control" name="prod_name"
+                        [(ngModel)]="prodForm.prodName"></td>
+            </tr>
+            <tr>
+                <td><label style="margin: 20px;">Product Description:</label></td>
+                <td style="padding-right: 30px;"><input type="text" class="form-control" name="prod_desc"
+                        [(ngModel)]="prodForm.prodDesc"></td>
+
+                <td><label style="margin: 20px;">Product Subcategory:</label></td>
+                <td style="padding-right: 30px;"><input type="text" class="form-control" name="prod_subcategory"
+                        [(ngModel)]="prodForm.prodSubcategory"></td>
+            </tr>
+            <tr>
+                <td><label  style="margin: 20px;">Subcategory Id* :</label></td>
+                <td style="padding-right: 30px;"><input type="number" class="form-control" name="prod_subcategory_id" [(ngModel)]="prodForm.prodSubcategoryId" #prodSubcategoryId="ngModel" required maxlength="10" [ngClass]="{error:prodSubcategoryId.errors && prodSubcategoryId.touched }" placeholder="Enter Subcategory Id">
+                    <div *ngIf="prodSubcategoryId.errors && prodSubcategoryId.touched">
+                        <small class="text-danger" *ngIf="prodSubcategoryId.errors['required']">product Subcategory Id required</small>
+                    </div>
+            </td>
+           
+                <td><label  style="margin: 20px;">Subcategory Description:</label></td>
+                <td style="padding-right: 30px;"><input type="text" class="form-control" name="prod_subcategory_desc" [(ngModel)]="prodForm.prodSubcategoryDesc"></td>
+            </tr>
+            <tr>
+                <td><label  style="margin: 20px;">Product Category:</label></td>
+                <td style="padding-right: 30px;"><input type="text" class="form-control" name="prod_category" [(ngModel)]="prodForm.prodCategory"></td>
+            
+                <td><label  style="margin: 20px;">Category Id* :</label></td>
+                <td style="padding-right: 30px;"><input type="number" class="form-control" name="prod_category_id" [(ngModel)]="prodForm.prodCategoryId" #prodCategoryId="ngModel" required maxlength="10" [ngClass]="{error:prodCategoryId.errors && prodCategoryId.touched}" placeholder="Enter Category id">
+                    <div *ngIf="prodCategoryId.errors && prodCategoryId.touched"  >
+                        <small class="text-danger" *ngIf="prodCategoryId.errors['required']">Category ID  is required</small>
+                    </div>
+            </tr>
+            <tr>
+                <td><label  style="margin: 20px;">Category Description:</label></td>
+                <td style="padding-right: 30px;"><input type="text" class="form-control" name="prod_category_desc" [(ngModel)]="prodForm.prodCategoryDesc"></td>
+            
+                <td><label style="margin: 20px;">Product Weight* :</label></td>
+                <td style="padding-right: 30px;"><input type="number" class="form-control" name="prod_weight_class" [(ngModel)]="prodForm.prodWeightClass" #prodWeightClass="ngModel" required maxlength="10" [ngClass]="{error:prodWeightClass.errors && prodWeightClass.touched}" placeholder="Enter Product Weight">
+                 
+                    <div *ngIf="prodWeightClass.errors && prodWeightClass.touched"  >
+                    <small class="text-danger" *ngIf="prodWeightClass.errors['required']">product weight is required</small>
+            </div>
+            </tr>
+            <tr>
+                <td><label style="margin: 20px;">Product Measurement:</label></td>
+                <td style="padding-right: 30px;"><input type="string" class="form-control" name="prod_unit_of_measure"
+                        [(ngModel)]="prodForm.prodUnitOfMeasure"></td>
+
+                <td><label for="prod_pack_size" style="margin: 20px;">Pack Size:</label></td>
+                <td style="padding-right: 30px;"><input type="string" class="form-control" name="prod_pack_size"
+                        [(ngModel)]="prodForm.prodPackSize"></td>
+            </tr>
+            <tr>
+                <td><label style="margin: 20px;">Supplier Id* :</label></td>
+                <td style="padding-right: 30px;"><input type="number" class="form-control" name="supplier_id" [(ngModel)]="prodForm.supplierId" #supplierId="ngModel" required maxlength="10" [ngClass]="{error:supplierId.errors && supplierId.touched}" placeholder="Enter supplier Id">
+                    <div *ngIf="supplierId.errors && supplierId.touched"  >
+                        <small class="text-danger" *ngIf="supplierId.errors['required']">Supplier Id  is required</small>
+                    </div>
+            
+                <td><label for="prod_status" style="margin: 20px;">Product Status:</label></td>
+                <td style="padding-right: 30px;"><input type="text" class="form-control" name="prod_status"
+                        [(ngModel)]="prodForm.prodStatus"></td>
+            </tr>
+            <tr>
+                <td><label style="margin: 20px;">Product List Price:</label></td>
+                <td style="padding-right: 30px;"><input type="number" class="form-control" name="prod_list_price"
+                        [(ngModel)]="prodForm.prodListPrice"></td>
+
+                <td><label style="margin: 20px;">Product Min Price:</label></td>
+                <td style="padding-right: 30px;"><input type="number" class="form-control" name="prod_min_price"
+                        [(ngModel)]="prodForm.prodMinPrice"></td>
+            </tr>
+            <tr>
+                <td><label  style="margin: 20px;">Product Total:</label></td>
+                <td style="padding-right: 30px;"><input type="text" class="form-control" name="prod_total" [(ngModel)]="prodForm.prodTotal"></td>
+            
+                <td><label  style="margin: 20px;">Product Total Id* :</label></td>
+                <td style="padding-right: 30px;"><input type="number" class="form-control" name="prod_total_id" [(ngModel)]="prodForm.prodTotalId" required #prodTotalId="ngModel"  maxlength="10" [ngClass]="{error:prodTotalId.errors && prodTotalId.touched}" placeholder="Enter Product Total Id">
+                    <div *ngIf="prodTotalId.errors && prodTotalId.touched"  >
+                        <small class="text-danger" *ngIf="prodTotalId.errors['required']">Product Total Id is required</small>
+                    </div>
+            </tr>
+            <tr>
+                <td><label style="margin: 20px;">Product Source Id:</label></td>
+                <td style="padding-right: 30px;"><input type="number" class="form-control" name="prod_src_id"
+                        [(ngModel)]="prodForm.prodSrcId"></td>
+
+                <td><label style="margin: 20px;">Product Effect From:</label></td>
+                <td style="padding-right: 30px;"><input type="date" class="form-control" name="prod_eff_from"
+                        [(ngModel)]="prodForm.prodEffFrom"></td>
+            </tr>
+            <tr>
+                <td><label style="margin: 20px;">Product Effect To:</label></td>
+                <td style="padding-right: 30px;"><input type="date" class="form-control" name="prod_eff_to"
+                        [(ngModel)]="prodForm.prodEffTo"></td>
+
+                <td><label style="margin: 20px;">Product Valid:</label></td>
+                <td style="padding-right: 30px;"><input type="text" class="form-control" name="prod_valid"
+                        [(ngModel)]="prodForm.prodValid"></td>
+            </tr>
+        </table>
+        <div>
+            <button  class=" btn my-3" style="background-color:lightskyblue ;" (click)="edit()"[disabled]="Prod.invalid">Update Product</button>
+            <div *ngIf="Prod.invalid">
+                <small class="text-danger">Please Fill Required Filed</small>
+               </div>
+        </div>
+    </div>
+</form>

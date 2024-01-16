@@ -1,0 +1,124 @@
+<div class="d-block" align="center" style="background-color: aliceblue;">
+  <h3 style="text-align: center;"><b>Products Table</b></h3>
+  <div class="d-block py-2">
+    <span class="d-inline-block">Search by: </span>
+    <span class="d-inline-block mx-3">
+      <select class="form-select" [(ngModel)]="searchParam" name="searchParam" id="searchParam">
+        <option value="all">All</option>
+        <option value="category">Category</option>
+        <option value="status">Status</option>
+        <option value="subcategory">Subcategory</option>
+        <option value="supplier">Supplier</option>
+        <option value="duplicate">Duplicate</option>
+        <option value="sold">Sold Products</option>
+        <option value="soldTo">Get Products Sold To Customer</option>
+        <option value="byChannel">Most Sold By Channel</option>
+      </select>
+    </span>
+    <span class="d-inline-block mx-3">
+      <input class="form-control" type="text" name="searchQuery" placeholder="Enter Input" [(ngModel)]="searchQuery">
+    </span>
+    <span class="d-inline-block mx-3">
+      <button class="btn btn-primary" (click)="search()">Search</button>
+    </span>
+  </div>
+  <div class="d-block py-2">
+    <span class="d-inline-block mx-3">
+      <span class="d-inline-block mx-3">Sort by: </span>
+      <span class="d-inline-block">
+        <select name="sortParam" id="sortParam" class="form-select" [(ngModel)]="sortParam">
+          <option value="prodId">By ID</option>
+          <option value="prodName">By Name</option>
+          <option value="prodDesc">By Description</option>
+          <option value="prodSubcategory">By Subcategory</option>
+          <option value="prodCategory">By Category</option>
+          <option value="prodListPrice">By Price</option>
+        </select>
+      </span>
+    </span>
+    <span class="d-inline-block">
+      <button class="btn btn-primary" (click)="sort()">Sort</button>
+    </span>
+  </div>
+</div>
+<div class="d-flex justify-content-center">
+  <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+    {{errMsg}}
+  </div>
+</div>
+<div class="table table-responsive table-striped table-bordered p-4">
+
+  <!-- Create table  -->
+  <table align="center" border="2px">
+    <tr>
+      <th scope="col" class="align-top">Product Id</th>
+      <th scope="col" class="align-top">Product Name</th>
+      <th scope="col" class="align-top">Product Desc</th>
+      <th scope="col" class="align-top">Subcategory</th>
+      <th scope="col" class="align-top">Subcategory Id</th>
+      <th scope="col" class="align-top">Subcategory Desc</th>
+      <th scope="col" class="align-top">Category</th>
+      <th scope="col" class="align-top">Category Id</th>
+      <th scope="col" class="align-top">Category Desc</th>
+      <th scope="col" class="align-top">ProductWeight</th>
+      <th scope="col" class="align-top">Unit of Measure</th>
+      <th scope="col" class="align-top">Pack Size</th>
+      <th scope="col" class="align-top">Supplier Id</th>
+      <th scope="col" class="align-top">Product Status</th>
+      <th scope="col" class="align-top">Product Price</th>
+      <th scope="col" class="align-top">Min Price</th>
+      <th scope="col" class="align-top">Product Total</th>
+      <th scope="col" class="align-top">Product Total Id</th>
+      <th scope="col" class="align-top">Product src Id</th>
+      <th scope="col" class="align-top"> From</th>
+      <th scope="col" class="align-top"> To</th>
+      <th scope="col" class="align-top">Product Valid</th>
+      <th scope="col" class="align-top">Action</th>
+    </tr>
+
+    <!-- show data from table -->
+    <tr *ngFor="let p of getCurrentPageProducts();">
+      <th scope="row">{{p.prodId}}</th>
+      <td>{{p.prodName}}</td>
+      <td>{{p.prodDesc}}</td>
+      <td>{{p.prodSubcategory}}</td>
+      <td>{{p.prodSubcategoryId}}</td>
+      <td>{{p.prodSubcategoryDesc}}</td>
+      <td>{{p.prodCategory}}</td>
+      <td>{{p.prodCategoryId}}</td>
+      <td>{{p.prodCategoryDesc}}</td>
+      <td>{{p.prodWeightClass}}</td>
+      <td>{{p.prodUnitOfMeasure}}</td>
+      <td>{{p.prodPackSize}}</td>
+      <td>{{p.supplierId}}</td>
+      <td>{{p.prodStatus}}</td>
+      <td>{{p.prodListPrice}}</td>
+      <td>{{p.prodMinPrice}}</td>
+      <td>{{p.prodTotal}}</td>
+      <td>{{p.prodTotalId}}</td>
+      <td>{{p.prodSrcId}}</td>
+      <td>{{p.prodEffFrom}}</td>
+      <td>{{p.prodEffTo}}</td>
+      <td>{{p.prodValid}}</td>
+      <td><a class="btn" style="background-color: lightskyblue;" [routerLink]="['/updateproduct',p.prodId]">Update</a>
+      </td>
+    </tr>
+  </table>
+
+
+  <!-- Pagination -->
+  <div class="text-center  my-3">
+    <td><button class="btn btn-primary" [disabled]="currentPage === 1" (click)="goToPage(1)">First</button>
+    <td><button class="btn btn-primary" [disabled]="currentPage === 1" (click)="goToPage(currentPage - 1)">
+        << </button>
+    <td><button class="btn btn-primary" [disabled]="currentPage === getTotalPages()"
+        (click)="goToPage(currentPage + 1)"> >> </button>
+    <td><button class="btn btn-primary" [disabled]="currentPage === getTotalPages()"
+        (click)="goToPage(getTotalPages())">Last</button>
+  </div>
+  <div>
+    <button class=" btn my-3" style="background-color:lightskyblue ;" [routerLink]="['/addproduct']" align="center">Add
+      Product
+    </button>
+  </div>
+</div>

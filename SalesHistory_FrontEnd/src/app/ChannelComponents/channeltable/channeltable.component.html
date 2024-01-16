@@ -1,0 +1,40 @@
+<div class="table table-bordered p-4" style="background-color:aliceblue;">
+    <p class="h4 mb-3" align="center"><b>Channel</b></p>
+    <div align="center" class="d-block">
+        <span class="d-inline-block mt-2 px-2 pb-4">
+            <select class="form-select" name="searchParam" id="searchParam" [(ngModel)]="searchParam">
+                <option value="usedByCustomer">Channel Used By Customer</option>
+            </select>
+        </span>
+        <span class="d-inline-block mt-2 px-2 pb-4">
+            <input class="form-control" type="text" placeholder="Enter Customer Id" name="searchQuery"
+                [(ngModel)]="searchQuery">
+        </span>
+        <span class="d-inline-block mt-2 px-2 pb-4"><button class="btn" style="background-color: lightskyblue;"
+                (click)="search()">Search</button></span>
+    </div>
+    <table align="center" border="2px">
+        <!-- </table>style="background-color:aliceblue;"> -->
+        <tr>
+            <th>Channel Id</th>
+            <th>Channel Description</th>
+            <th>Channel Class</th>
+            <th>Channel Class Id</th>
+            <th>Channel Total</th>
+            <th>Channel Total Id</th>
+        </tr>
+        <tr *ngFor="let c of channels">
+            <td>{{c.channelId}}</td>
+            <td>{{c.channelDesc}}</td>
+            <td>{{c.channelClass}}</td>
+            <td>{{c.channelClassId}}</td>
+            <td>{{c.channelTotal}}</td>
+            <td>{{c.channelTotalId}}</td>
+        </tr>
+    </table>
+    <div class="d-flex justify-content-center">
+        <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+            {{errMsg}}
+        </div>
+    </div>
+</div>

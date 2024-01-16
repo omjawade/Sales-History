@@ -1,0 +1,73 @@
+<nav class="navbar navbar-expand-lg" style="background-color:lightskyblue">
+  <div class="container-fluid">
+   <a (click)="logout()"> <img src="/assets/OIP.jpg" style="width: 50px; height:30px mx-3 "></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mynavbar">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="mynavbar">
+      <ul class="navbar-nav me-auto" >
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a  class="nav-link" style="color: aliceblue;" href="home">Home</a>
+        </li>
+        <li class="nav-item dropdown">
+          <a   class="nav-link dropdown-toggle" style="color: aliceblue;" href="#" role="button"
+            data-bs-toggle="dropdown">Products</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="showproduct">Show Product</a></li>
+            <li><a class="dropdown-item" href="productsbychannel">Products Sold By Channel</a></li>
+            <li><a class="dropdown-item" href="mostsoldproduct">Most Sold Product</a></li>
+
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a   class="nav-link dropdown-toggle" style="color: aliceblue;"
+            href="updatecountry/upadtecustomer.component.html" role="button" data-bs-toggle="dropdown">Customers</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="showcustomer">Show Customer</a></li>
+            <!-- <li><a class="dropdown-item" href="addcustomer">Add Customer</a></li>
+              <li><a class="dropdown-item" href="updatecustomer">Update Customer</a></li> -->
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a  class="nav-link dropdown-toggle" style="color: aliceblue;" href="#" role="button"
+            data-bs-toggle="dropdown">Countries</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="showcountry">Show Country</a></li>
+            <li><a class="dropdown-item" href="countrywisecustomercount">Countrwise Count of Customers</a></li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a   class="nav-link dropdown-toggle" style="color: aliceblue;" href="#" role="button"
+            data-bs-toggle="dropdown">Sales</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="showsales">Sales</a></li>
+            <li><a class="dropdown-item" href="categorywisesales">Categorywise Sales Data</a></li>
+            <li><a class="dropdown-item" href="categorywisesalesforyear">Categorywise Sales Data For Year</a></li>
+          </ul>
+        </li>
+
+
+
+        <li class="nav-item dropdown">
+          <a  class="nav-link dropdown-toggle" style="color: aliceblue;" href="#" role="button"
+            data-bs-toggle="dropdown">Channels</a>
+          <ul class="dropdown-menu">
+            <li><a class="dropdown-item" href="channelstable">Channels Used By Customer</a></li>
+            <li><a class="dropdown-item" href="channelaggregaterevenue">Revenue</a>
+            <li><a class="dropdown-item" href="aggrsales">Aggregate Sales</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <form class="d-flex" style="padding-right: 30px;">
+    <a *ngIf="isloggedin" class="btn btn-outline-danger rounded-5" type="logout" (click)="logout()"><b>Logout</b></a>
+  </form>
+</nav>
+<router-outlet></router-outlet>
+<div class="justify-content-center">
+</div>

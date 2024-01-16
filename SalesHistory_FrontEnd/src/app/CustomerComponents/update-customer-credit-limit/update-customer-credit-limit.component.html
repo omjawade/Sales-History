@@ -1,0 +1,21 @@
+<div align="center" style="margin-top: 50px;">
+  <h3 style="text-align: center;"><b>Update Customers</b></h3>
+  <form #Prod="ngForm" border="2px" class="my-md-3">
+    <div class="justify-content-center">
+      <div class="card card-body" style="width: 16rem;" align="center">
+        <table style="background-color:aliceblue;" class="p-4">
+          <tr class="text-center">
+            <label for="cred">New Limit:</label>
+          </tr>
+          <tr class="mx-4">
+            <input type="number" class="form-control my-2" id="cred" name="creditLimit" [(ngModel)]="creditLimit">
+          </tr>
+          <tr>
+            <button align="center" class="btn mx-4 my-2" style="background-color:lightskyblue ;"
+              (click)="edit()"><b>Update Credit Limit</b></button>
+          </tr>
+        </table>
+      </div>
+    </div>
+  </form>
+</div>

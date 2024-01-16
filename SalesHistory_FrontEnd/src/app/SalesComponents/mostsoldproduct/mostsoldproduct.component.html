@@ -1,0 +1,26 @@
+<div class="table table-bordered p-4" style="background-color:aliceblue;">
+    <p class="h4 mb-3" style="text-align: center;"><b>The Most Sold Product</b></p>
+    <table align="center" border="2px">
+        <tr>
+            <th>Product ID</th>
+            <th>Product Name</th>
+            <th>Product Description</th>
+            <th>Product Category</th>
+            <th>Product List Price</th>
+            <th>Quantity Sold</th>
+        </tr>
+        <tr *ngFor="let p of sold">
+            <td>{{p.prodId}}</td>
+            <td>{{p.prodName}}</td>
+            <td>{{p.prodDesc}}</td>
+            <td>{{p.prodCategory}}</td>
+            <td>{{p.prodListPrice}}</td>
+            <td>{{p.salesCount}}</td>
+        </tr>
+    </table>
+</div>
+<div class="d-flex justify-content-center">
+    <div class="m-4 px-2" style="background-color: lightcoral;" [hidden]="err">
+        {{errMsg}}
+    </div>
+</div>
